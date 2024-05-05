@@ -1,0 +1,44 @@
+.Canvas{
+    width: 40vw;
+    display: flex;
+    border-width: 3px;
+    border-style: solid;
+    justify-content: center;
+    align-items: center;
+    height: 420px; 
+    border-radius: 20px;
+    background-color: whitesmoke;
+}
+
+.PromptBox{
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.DrawHeader{
+    padding: 15px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    height: 80vh;
+    width: 40vw;
+    background-color: rgb(252, 241, 227);
+}
+
+.DrawBox{
+    padding: 15px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    height: 80vh;
+    width: 40vw;
+    background-color: rgb(252, 241, 227);
+}
+
+.DrawSpace{
+    display: flex;
+    justify-content: center;
+}

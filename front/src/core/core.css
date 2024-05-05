@@ -1,0 +1,22 @@
+#root{
+    height: 100vh;
+    width: 100vw;
+}
+
+.header{
+    background: linear-gradient(rgb(210, 246, 243), white);
+    border-radius: 5px;
+    box-shadow: 'md';
+    border-width: '1px';
+    padding: 20px;
+    margin: 10px;
+    width: 100%;
+}
+
+.footer{
+    height: 100px;
+}
+
+.content{
+    margin: 40px;
+}

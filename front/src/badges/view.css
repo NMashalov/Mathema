@@ -1,0 +1,36 @@
+.container {
+    height: 200px;
+    transform-style: preserve-3d;
+    perspective-origin: 600px center;
+    perspective: 800px;
+    margin-top: 50px;
+}
+
+.card {
+    border: solid 1px blue;
+    background-color: lightblue;
+    border-radius: 10px;
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    transform-style: preserve-3d;
+    transform: rotateY(var(--angle));
+    transform-origin: center 0 1200px; 
+    left: 500px;
+}
+
+#c1 {
+    --angle: 20deg;
+}
+#c2 {
+    --angle: 10deg;
+}
+#c3 {
+    --angle: 0deg;
+}
+#c4 {
+    --angle: -10deg;
+}
+#c5 {
+    --angle: -20deg;
+}
