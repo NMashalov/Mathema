@@ -12,7 +12,15 @@ services:
   #     - ./.env.dev
   #   depends_on:
   #     - db
-  db:
+  # ocr:
+  #   image: ocr_quant
+  #   environment:
+  #     NUM_TASK: 5
+  #   volumes:
+  #     - ./pdfs:/work/pdfs
+  #     - ./searchable_pdfs:/work/searchable_pdfs
+  #     - ./logs:/work/logs
+  chess:
     image: micro-chess
     ports: 
       - 8000:3000

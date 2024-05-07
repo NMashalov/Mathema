@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "ocr"
+name = "api"
 version = "0.1.0"
 description = ""
 authors = ["Nikita"]
@@ -7,14 +7,12 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-tqdm = "^4.66.4"
-httpx = "^0.27.0"
-ocrmypdf = "^16.2.0"
+fastapi = "^0.111.0"
+rq = "^1.16.2"
+namesgenerator = "^0.3"
 
 [tool.poetry.scripts]
-start = 'ocr.load:start'
-ocr = 'ocr.ocr:ocr'
-
+start = 'api.server:start'
 
 [build-system]
 requires = ["poetry-core"]

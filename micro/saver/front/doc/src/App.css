@@ -1,0 +1,76 @@
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+
+.container{
+  border-radius: 8px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  margin: 10px;
+}
+
+
+.className{
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.app{
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+}
+
+.option{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.item {
+  width: 50%
+}
+
+
+.upload{
+  width: 50%;
+  height: 50;
+  opacity: 0.5;
+  background-color: rgb(214, 216, 215);
+  transition: 0.3s;
+}
+
+.upload :hover{
+  opacity: 0;
+}
+
+.logs{
+  overflow-y: scroll;
+}
+
+.input{
+  border-radius: 8px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+
+.viewer{
+  height: 50vh;
+  width: 90%;
+}
+
+.modalViewer{
+  height: 95vh;
+  width: 80vw;
+}
+
+.center {
+  position:  fixed;
+  top: 5px;
+  left: 10%;
+  bottom: 40px;
+  z-index: 100;
+}

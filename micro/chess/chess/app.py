@@ -4,6 +4,7 @@ from stockfish import Stockfish
 from pydantic import BaseModel,Field
 from enum import IntEnum
 import uvicorn
+from fastapi.middleware.cors import CORSMiddleware
 
 fen_regex = r'^([rnbqkpRNBQKP1-8]+\/){7}([rnbqkpRNBQKP1-8]+)\s[bw]\s(-|K?Q?k?q?)\s(-|[a-h][36])\s(0|[1-9][0-9]*)\s([1-9][0-9]*)'
 class EloLevel(IntEnum):
@@ -14,7 +15,7 @@ class EloLevel(IntEnum):
 
 class Chess(BaseModel):
     fen_state: str = Field(pattern=fen_regex)
-    difficulty :EloLevel
+    difficulty :EloLevel = EloLevel.easy
 
 
 models = {}
@@ -31,18 +32,40 @@ async def lifespan(app: fastapi.FastAPI):
 app = fastapi.FastAPI(lifespan=lifespan)
 
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=['*'],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+def add_game_move(moves: list[dict]):
+    for move in moves:
+        move['game_move'] = {
+            'from': move["Move"][:2],
+            'to': move["Move"][2:],
+            'promotion': 'q'
+        }
+
+    return moves
+
+
+
 @app.post('/move')
 def return_top_moves(req: Chess):
     stockfish: Stockfish = models['stockfish']
     if stockfish.is_fen_valid(req.fen_state):
         stockfish.set_fen_position(req.fen_state)
         stockfish.set_elo_rating(req.difficulty)
-        return stockfish.get_top_moves(3) 
+        return add_game_move(stockfish.get_top_moves(3)) 
     else:
         raise fastapi.HTTPException(status_code=404, detail=f"Wrong FEN. {stockfish.get_fen_position()}")
 
 
 def start():
-    uvicorn.run(app,host="0.0.0.0",port=3000)
+    uvicorn.run(app,host="0.0.0.0",port=8000)
+
+
 if __name__ == '__main__':
     start()
